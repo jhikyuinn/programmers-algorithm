@@ -6,10 +6,11 @@ class Solution {
             plus+=i;
         }
         
-        int index = -100;
+        int index = 0;
         while(true){
             if(index * num + plus == total) break;
-            index++;
+            if(num >= total){index--;}
+            else{index++;}
         }
         
         int count = 0;
