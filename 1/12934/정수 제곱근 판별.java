@@ -1,7 +1,9 @@
+import java.lang.Math;
+
 class Solution {
     public long solution(long n) {
-        long answer = -1;
-        if (Math.sqrt(n) % 1 == 0) answer = ((long)Math.sqrt(n)+1) * ((long)Math.sqrt(n)+1);
+        long answer = (Math.sqrt(n) % 1 == 0) ? (long)((Math.sqrt(n)+1) * (Math.sqrt(n)+1)) : -1;
+        
         return answer;
     }
 }
