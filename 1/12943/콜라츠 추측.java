@@ -1,15 +1,18 @@
 class Solution {
     public int solution(int num) {
+        int answer = 0;
         
-        int count = 0;
-        long numlong = num;
+        long longnum = (long)num;
         
-        while(numlong != 1 && count < 500){
-            if(numlong % 2 == 0) numlong /= 2;
-            else numlong = numlong * 3 + 1;
-            count++;
-        }     
-        int answer = (count == 500)? -1 : count;
-        return answer;
+        while(longnum != 1){
+            if(longnum % 2 == 0){
+                longnum /= 2;
+            }else{
+                longnum = longnum * 3 + 1;
+            }
+            answer++;
+        }
+        
+        return (answer > 500) ? -1 : answer;
     }
 }
