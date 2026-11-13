@@ -1,22 +1,21 @@
+import java.util.List;
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 class Solution {
     public int[] solution(int[] arr) {
         
-        if(arr.length == 1) return new int[]{-1};
+        if (arr.length == 1) return new int[]{-1};
         
         int min = arr[0];
-        int minindex = 0;
+        for(int value: arr){
+            if( value < min ) min = value;
+        }
+       
+        List <Integer> list = Arrays.stream(arr).boxed().collect(Collectors.toList());
+        list.remove(Integer.valueOf(min));
         
-        for(int i = 1; i < arr.length; i++){
-            if(arr[i] < min){
-                min = arr[i];
-                minindex = i;
-            }
-        }
-        int[] answer = new int[arr.length -1];
-        int count = 0;
-        for(int i = 0 ; i < arr.length; i++){
-            if(i != minindex) answer[count++] = arr[i];
-        }
+        int[] answer = list.stream().mapToInt(i -> i).toArray();
         return answer;
     }
 }
