@@ -1,14 +1,18 @@
 class Solution {
     public String solution(String s, int n) {
         String answer = "";
-        for(int i = 0; i < s.length(); i++){
-            if(s.charAt(i) == ' ') answer += " ";
-            else if((90 < (s.charAt(i) + n) && 64 < s.charAt(i) && s.charAt(i) < 91) || (s.charAt(i) + n) > 122)  {
-                answer += (char)(s.charAt(i) + n - 26);
-            }else{
-                answer += (char)(s.charAt(i) + n);
+        
+        for (char c : s.toCharArray()) {
+            if(64 < c && c < 91 ){
+                c += n;
+                if(c >= 91) c -= 26;
+            }else if(96 < c && c < 123){
+                c += n;
+                if(c >= 123) c -= 26;
             }
+            answer += (char)c;
         }
+
         return answer;
     }
 }
